@@ -1,0 +1,3 @@
+[remote "heroku"]
+	url = https://git.heroku.com/calm-beach-96180.git
+	fetch = +refs/heads/*:refs/remotes/heroku/*
