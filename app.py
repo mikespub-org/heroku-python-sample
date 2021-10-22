@@ -21,7 +21,7 @@ def hello():
         "<b>Environ:</b> <pre>{environ}</pre>"
     )
     return tmpl.format(
-        name=os.getenv("NAME", "World"),
+        name=os.getenv("APP_NAME", "World"),
         hostname=socket.gethostname(),
         file=__file__,
         date=time.ctime(os.path.getmtime(__file__)),
