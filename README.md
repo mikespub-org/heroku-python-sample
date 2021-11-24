@@ -48,3 +48,14 @@ or
 For more information about using Python on Heroku, see these Dev Center articles:
 
 - [Python on Heroku](https://devcenter.heroku.com/categories/python)
+
+## Deploying to Cloud Foundry
+
+Create .cfignore to ignore files / directories as needed
+
+```sh
+$ cf push python-sample --random-route
+```
+
+- [Python Buildpack](https://docs.cloudfoundry.org/buildpacks/python/index.html)
+
