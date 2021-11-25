@@ -1,0 +1,18 @@
+---
+applications:
+- name: python-app
+  stack: cflinuxfs3
+  env:
+    APP_NAME: Cloud Foundry
+  # buildpacks:
+  # - python_buildpack
+  # random-route: true
+  # routes:
+  # - route: python-app-noisy-nyala-fa.cfapps.us10.hana.ondemand.com
+  #   protocol: http1
+  # processes:
+  # - type: web
+  #   instances: 1
+  #   memory: 1024M
+  #   disk_quota: 1024M
+  #   health-check-type: port
