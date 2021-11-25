@@ -1,0 +1,4 @@
+applications:
+- name: python-sample
+  buildpacks:
+  - https://github.com/cloudfoundry/python-buildpack.git
