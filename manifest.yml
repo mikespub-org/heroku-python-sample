@@ -10,6 +10,8 @@ applications:
   # routes:
   # - route: python-app-noisy-nyala-fa.cfapps.us10.hana.ondemand.com
   #   protocol: http1
+  # - route: python.cf.mikespub.net
+  #   protocol: http1
   # processes:
   # - type: web
   #   instances: 1
