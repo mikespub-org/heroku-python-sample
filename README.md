@@ -65,7 +65,7 @@ Create local.yml with latest buildpack
 
 ```sh
 $ sudo cf local stage python-sample
-$ sudo cf local run python-sample -i 0.0.0.0
+$ sudo cf local run python-sample -i 0.0.0.0 -p 8080
 ```
 
 - [CF Local Plugin](https://github.com/cloudfoundry-incubator/cflocal)
