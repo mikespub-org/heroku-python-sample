@@ -70,3 +70,54 @@ $ sudo cf local run python-sample -i 0.0.0.0 -p 8080
 
 - [CF Local Plugin](https://github.com/cloudfoundry-incubator/cflocal)
 
+## Building with Cloud Native Buildpacks
+
+See [Turn Your Code into Docker Images with Cloud Native Buildpacks](https://blog.heroku.com/docker-images-with-buildpacks) and [An App’s Brief Journey from Source to Image](https://buildpacks.io/docs/app-journey/)
+
+[Install Pack.](https://buildpacks.io/docs/tools/pack/)
+
+Create [project.toml](project.toml) to exclude/include files for the image, specify buildpacks etc.
+
+Adapt [Procfile](Procfile) to bind gunicorn to 0.0.0.0 if you want to use heroku buildpacks:
+
+```
+$ cat Procfile
+web: gunicorn app:app -b 0.0.0.0:8000
+```
+
+Build (and optionally publish) container image with appropriate builder:
+
+```
+$ pack build --builder heroku/buildpacks mikespub/heroku-python-sample
+latest: Pulling from heroku/buildpacks
+...
+===> ANALYZING
+[analyzer] Restoring data for SBOM from previous image
+===> DETECTING
+[detector] heroku/python 0.0.0
+===> RESTORING
+[restorer] Restoring metadata for "heroku/python:shim" from cache
+[restorer] Restoring data for "heroku/python:shim" from cache
+===> BUILDING
+[builder] -----> Using Python version specified in runtime.txt
+...
+[builder] -----> Installing requirements with pip
+===> EXPORTING
+...
+[exporter] Setting default process type 'web'
+[exporter] Saving mikespub/heroku-python-sample...
+[exporter] *** Images (8b8f78fac102):
+[exporter]       mikespub/heroku-python-sample
+[exporter] Adding cache layer 'heroku/python:shim'
+Successfully built image mikespub/heroku-python-sample
+```
+
+Test the containerized app image with Docker:
+
+```
+$ docker run --rm -p 8080:8000 mikespub/heroku-python-sample
+[2022-11-21 16:34:31 +0000] [1] [INFO] Starting gunicorn 20.1.0
+[2022-11-21 16:34:31 +0000] [1] [INFO] Listening at: http://0.0.0.0:8000 (1)
+...
+```
+
