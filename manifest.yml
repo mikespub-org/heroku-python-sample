@@ -1,7 +1,7 @@
 ---
 applications:
 - name: python-app
-  stack: cflinuxfs3
+  stack: cflinuxfs4
   env:
     APP_NAME: Cloud Foundry
   # buildpacks:
